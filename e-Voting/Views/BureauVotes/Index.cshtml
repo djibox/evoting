@@ -1,0 +1,41 @@
+﻿@model IEnumerable<e_Voting.Models.Domain.BureauVote>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="alert alert-dark">Liste des bureaux de vote !</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                Bureau de vote
+            </th>
+            <th>
+                Nombre d'inscrits
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomBureauVote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreInscrits)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
